@@ -16,15 +16,17 @@ public class Solution {
 	// Complete the jumpingOnClouds function below.
 	static int jumpingOnClouds(int[] c) {
 		int j = 0;
-		for (int i = 0; i < c.length - 1; i++) {
-			if ((c[i + 1] == 0 || c[i] == 1) && c[i + 2] == 0) {
-				j++;
-				i++;
-			} else {
-				j++;
-			}
-		}
-		return j;
+        int i = 0;
+        while ( i < c.length - 2) {
+            if (c[i + 2] == 0) {
+                j++;
+                i+=2;
+            } else {
+                j++;
+                i++;
+            }
+        }
+        return j + (c.length - i -1);
 	}
 
 	// Complete the countingValleys function below.
