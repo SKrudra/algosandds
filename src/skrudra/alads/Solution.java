@@ -6,27 +6,51 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the hourglassSum function below.
+	static int hourglassSum(int[][] arr) {
+		int l = arr.length;
+		int h = arr[0].length;
+		int sum = 0;
+		for (int i = 0; i < l - 2; i++) {
+			for (int j = 0; j < h - 2; j++) {
+				int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j]
+						+ arr[i + 2][j + 1] + arr[i + 2][j + 2];
+				if (temp > sum) {
+					sum = temp;
+				}
+			}
+		}
+		return sum;
+	}
+
 	// Complete the repeatedString function below.
 	static long repeatedString(String s, long n) {
 		long r = 0;
+		int l = s.length();
+		int a = l - s.replaceAll("a", "").length();
 
+		int b = (int) (n % l);
+		String str = s.substring(0, b);
+		int p = str.length() - str.replaceAll("a", "").length();
+		r = n / l * a;
+		r += p;
 		return r;
 	}
 
 	// Complete the jumpingOnClouds function below.
 	static int jumpingOnClouds(int[] c) {
 		int j = 0;
-        int i = 0;
-        while ( i < c.length - 2) {
-            if (c[i + 2] == 0) {
-                j++;
-                i+=2;
-            } else {
-                j++;
-                i++;
-            }
-        }
-        return j + (c.length - i -1);
+		int i = 0;
+		while (i < c.length - 2) {
+			if (c[i + 2] == 0) {
+				j++;
+				i += 2;
+			} else {
+				j++;
+				i++;
+			}
+		}
+		return j + (c.length - i - 1);
 	}
 
 	// Complete the countingValleys function below.
