@@ -6,10 +6,29 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the jumpingOnClouds function below.
+	static int jumpingOnClouds(int[] c) {
+		int j = 0;
+		
+		return j;
+	}
+
 	// Complete the countingValleys function below.
 	static int countingValleys(int n, String s) {
-
-		return 0;
+		int r = 0;
+		int v = 0;
+		boolean valleyStart = false;
+		for (int i = 0; i < n; i++) {
+			r += s.charAt(i) == 'U' ? 1 : -1;
+			if (r < 0 && !valleyStart) {
+				valleyStart = true;
+			}
+			if (r == 0 && valleyStart) {
+				v++;
+				valleyStart = false;
+			}
+		}
+		return v;
 	}
 
 	// Complete the sockMerchant function below.
