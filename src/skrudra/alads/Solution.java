@@ -6,10 +6,24 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the repeatedString function below.
+	static long repeatedString(String s, long n) {
+		long r = 0;
+
+		return r;
+	}
+
 	// Complete the jumpingOnClouds function below.
 	static int jumpingOnClouds(int[] c) {
 		int j = 0;
-		
+		for (int i = 0; i < c.length - 1; i++) {
+			if ((c[i + 1] == 0 || c[i] == 1) && c[i + 2] == 0) {
+				j++;
+				i++;
+			} else {
+				j++;
+			}
+		}
 		return j;
 	}
 
