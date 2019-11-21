@@ -6,11 +6,27 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the rotLeft function below.
+	static int[] rotLeft(int[] a, int d) {
+		int[] r = new int[a.length];
+
+		int l = a.length;
+		
+		int index = l - d%l -1;
+		r[index] = a[l-1];
+//		for(int i = l-1; i>=0; i--) {
+//			r[index--] = a[]
+//		}
+		
+		
+		return r;
+	}
+
 	// Complete the hourglassSum function below.
 	static int hourglassSum(int[][] arr) {
 		int l = arr.length;
 		int h = arr[0].length;
-		int sum = 0;
+		int sum = Integer.MIN_VALUE;
 		for (int i = 0; i < l - 2; i++) {
 			for (int j = 0; j < h - 2; j++) {
 				int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j]
