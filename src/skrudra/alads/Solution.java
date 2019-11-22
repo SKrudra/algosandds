@@ -9,16 +9,18 @@ public class Solution {
 	// Complete the rotLeft function below.
 	static int[] rotLeft(int[] a, int d) {
 		int[] r = new int[a.length];
-
 		int l = a.length;
-		
-		int index = l - d%l -1;
-		r[index] = a[l-1];
-//		for(int i = l-1; i>=0; i--) {
-//			r[index--] = a[]
-//		}
-		
-		
+		int index = l - d % l - 1;
+		int t1 = index;
+		r[index] = a[l - 1];
+		int temp = l - 1;
+		for (int i = index; i >= 0; i--) {
+			r[index--] = a[temp--];
+		}
+		int p = t1;
+		for (int j = l - 1; j > t1; j--) {
+			r[j] = a[p--];
+		}
 		return r;
 	}
 
