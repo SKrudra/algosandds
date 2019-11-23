@@ -17,9 +17,8 @@ public class Solution {
 		for (int i = index; i >= 0; i--) {
 			r[index--] = a[temp--];
 		}
-		int p = t1;
-		for (int j = l - 1; j > t1; j--) {
-			r[j] = a[p--];
+		for (int j = t1 + 1,  k = 0; j < l; j++, k++) {
+			r[j] = a[k];
 		}
 		return r;
 	}
