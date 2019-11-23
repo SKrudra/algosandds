@@ -6,6 +6,25 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the minimumBribes function below.
+	static void minimumBribes(int[] q) { // 1 2 5 3 7 8 6 4 
+		int pSteps = 0;
+		int nSteps = 0;
+		for (int i = 0; i < q.length; i++) {
+			if (q[i] - (i + 1) > 2) {
+				System.out.println("Too chaotic");
+				return;
+			} else if (q[i] - (i + 1) < 0) {
+				nSteps += -1 * (q[i] - (i + 1));
+			} else if (q[i] - (i + 1) <= 2) {
+				pSteps += q[i] - (i + 1);
+			}
+		}
+		if (nSteps == pSteps) {
+			System.out.println(nSteps);
+		}
+	}
+
 	// Complete the rotLeft function below.
 	static int[] rotLeft(int[] a, int d) {
 		int[] r = new int[a.length];
@@ -17,7 +36,7 @@ public class Solution {
 		for (int i = index; i >= 0; i--) {
 			r[index--] = a[temp--];
 		}
-		for (int j = t1 + 1,  k = 0; j < l; j++, k++) {
+		for (int j = t1 + 1, k = 0; j < l; j++, k++) {
 			r[j] = a[k];
 		}
 		return r;
