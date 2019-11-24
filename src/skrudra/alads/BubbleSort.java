@@ -5,8 +5,9 @@ import java.util.Arrays;
 public class BubbleSort {
 
 	public static void main(String[] args) {
-		int arr[] = { 8, 3, 5, 9, 2, 4, 8 };
+		int arr[] = { 1, 2, 5, 3, 7, 8, 6, 4 };
 		int l = arr.length;
+		int step = 0;
 		for (int i = 0; i < l; i++) {
 			for (int j = 0; j < l - i - 1; j++) {
 				int temp = 0;
@@ -14,9 +15,11 @@ public class BubbleSort {
 					temp = arr[j];
 					arr[j] = arr[j + 1];
 					arr[j + 1] = temp;
+					step++;
 				}
 			}
 		}
+		System.out.println(step);
 		System.out.println(Arrays.toString(arr));
 	}
 }

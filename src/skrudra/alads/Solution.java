@@ -7,22 +7,38 @@ import java.util.Map;
 public class Solution {
 
 	// Complete the minimumBribes function below.
-	static void minimumBribes(int[] q) { // 1 2 5 3 7 8 6 4 
-		int pSteps = 0;
-		int nSteps = 0;
+	static void minimumBribes(int[] q) { // 1 2 5 3 7 8 6 4
+		int steps = 0;
 		for (int i = 0; i < q.length; i++) {
 			if (q[i] - (i + 1) > 2) {
 				System.out.println("Too chaotic");
 				return;
-			} else if (q[i] - (i + 1) < 0) {
-				nSteps += -1 * (q[i] - (i + 1));
-			} else if (q[i] - (i + 1) <= 2) {
-				pSteps += q[i] - (i + 1);
 			}
 		}
-		if (nSteps == pSteps) {
-			System.out.println(nSteps);
+		for (int i = 1; i < q.length; i++) {
+			int j = i - 1;
+			int key = q[i];
+			while ((j > -1) && (q[j] > key)) {
+				q[j + 1] = q[j];
+				j--;
+				steps++;
+			}
+			q[j + 1] = key; // insertion
 		}
+		/* bubble sort; fails at time complexity */
+		//		for (int i = 0; i < q.length; i++) {
+		//	for (int j = 0; j < q.length - i - 1; j++) {
+		//		int temp = 0;
+		//		if (q[j] > q[j + 1]) {
+		//				temp = q[j];
+		//				q[j + 1] = q[j];
+		//				q[j] = temp;
+		//				steps++;
+		//			}
+		//		}
+		// 	}
+		System.out.println(steps);
+
 	}
 
 	// Complete the rotLeft function below.
