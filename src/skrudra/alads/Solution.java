@@ -6,6 +6,22 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the minimumSwaps function below.
+	static int minimumSwaps(int[] arr) {
+		int swap = 0;
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < arr.length; i++) {
+			map.put(arr[i], i);
+		}
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] != i - 1 + 1) {
+				int temp = arr[i];
+//                map.get(i) // check against the index and swap
+			}
+		}
+		return swap;
+	}
+
 	// Complete the minimumBribes function below.
 	static void minimumBribes(int[] q) { // 1 2 5 3 7 8 6 4
 		int steps = 0;
@@ -26,17 +42,17 @@ public class Solution {
 			q[j + 1] = key; // insertion
 		}
 		/* bubble sort; fails at time complexity */
-		//		for (int i = 0; i < q.length; i++) {
-		//	for (int j = 0; j < q.length - i - 1; j++) {
-		//		int temp = 0;
-		//		if (q[j] > q[j + 1]) {
-		//				temp = q[j];
-		//				q[j + 1] = q[j];
-		//				q[j] = temp;
-		//				steps++;
-		//			}
-		//		}
-		// 	}
+		// for (int i = 0; i < q.length; i++) {
+		// for (int j = 0; j < q.length - i - 1; j++) {
+		// int temp = 0;
+		// if (q[j] > q[j + 1]) {
+		// temp = q[j];
+		// q[j + 1] = q[j];
+		// q[j] = temp;
+		// steps++;
+		// }
+		// }
+		// }
 		System.out.println(steps);
 
 	}
