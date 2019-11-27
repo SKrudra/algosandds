@@ -6,6 +6,24 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the makeAnagram function below.
+	static int makeAnagram(String a, String b) {
+		// check for the number of occurrences
+		int r = 0;
+		for (int i = 1; i <= a.length(); i++) {
+			if (!b.contains(a.substring(i - 1, i))) {
+				r++;
+			}
+		}
+		for (int j = 1; j <= b.length(); j++) {
+			if (!a.contains(b.substring(j - 1, j))) {
+				r++;
+			}
+
+		}
+		return r;
+	}
+
 	// Complete the minimumSwaps function below.
 	static int minimumSwaps(int[] arr) {
 		int swap = 0;
@@ -41,20 +59,7 @@ public class Solution {
 			}
 			q[j + 1] = key; // insertion
 		}
-		/* bubble sort; fails at time complexity */
-		// for (int i = 0; i < q.length; i++) {
-		// for (int j = 0; j < q.length - i - 1; j++) {
-		// int temp = 0;
-		// if (q[j] > q[j + 1]) {
-		// temp = q[j];
-		// q[j + 1] = q[j];
-		// q[j] = temp;
-		// steps++;
-		// }
-		// }
-		// }
 		System.out.println(steps);
-
 	}
 
 	// Complete the rotLeft function below.
@@ -164,5 +169,7 @@ public class Solution {
 	public static void main(String[] args) throws IOException {
 		int[] socks = { 10, 20, 20, 10, 10, 30, 50, 10, 20 };
 		System.out.println(sockMerchant(9, socks));
+
+		System.out.println(makeAnagram("fcrxzwscanmligyxyvym`", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
 	}
 }
