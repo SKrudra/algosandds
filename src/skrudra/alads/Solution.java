@@ -9,10 +9,17 @@ public class Solution {
 	// Complete the makeAnagram function below.
 	static int makeAnagram(String a, String b) {
 		// check for the number of occurrences
+		String repeated = "";
 		int r = 0;
 		for (int i = 1; i <= a.length(); i++) {
-			if (!b.contains(a.substring(i - 1, i))) {
+			String test = a.substring(i - 1, i);
+			if (!b.contains(test)) {
 				r++;
+			} else if (!repeated.contains(test)) { // skip the repeated numbers
+				repeated += test;
+				int first = b.length() - b.replaceAll(test, "").length();
+				int second = a.length() - a.replaceAll(test, "").length();
+				r += first > second ? first - second : second - first;
 			}
 		}
 		for (int j = 1; j <= b.length(); j++) {
