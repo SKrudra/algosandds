@@ -1,10 +1,40 @@
 package skrudra.alads;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Solution {
+
+	// Complete the isValid function below.
+	static String isValid(String s) {
+		Map<Character, Integer> deck = new HashMap<>();
+		for (int i = 0; i < s.length(); i++) {
+			if (deck.containsKey(s.charAt(i))) {
+				deck.put(s.charAt(i), deck.get(s.charAt(i)).intValue() + 1);
+			} else {
+				deck.put(s.charAt(i), 1);
+			}
+		}
+		System.out.println(deck.values());
+        Integer[] values = new Integer[deck.values().size()];
+        values = deck.values().toArray(values);
+        int first = Collections.min(Arrays.asList(values));
+        System.out.println(first);
+        int exception = 0;
+        for (int j = 0; j < values.length; j++) {
+            if (exception > 1) {
+                return "NO";
+            } else if (exception == 0) {
+                exception++;
+            }
+        }
+        return "YES";
+	}
 
 	// Complete the makeAnagram function below.
 	static int makeAnagram(String a, String b) {
