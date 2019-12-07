@@ -1,14 +1,57 @@
 package skrudra.alads;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Solution {
+
+	static int maxSequenceOf1sInBinary(int n) {
+//		int n = 439;
+		String binary = "";
+		while (n > 0) {
+			binary = n % 2 + binary;
+			n /= 2;
+		}
+		System.out.println(binary);
+		int max = 1;
+		int temp = 1;
+		for (int i = 0; i < binary.length() - 1; i++) {
+			if ("1".equals(binary.substring(i, i + 1)) && "1".equals(binary.substring(i + 1, i + 2))) {
+				temp++;
+			} else if (temp > max) {
+				max = temp;
+				temp = 1;
+			} else {
+				temp = 1;
+			}
+		}
+		System.out.println(max > temp ? max : temp);
+		return max > temp ? max : temp;
+	}
+
+	// Complete the compareTriplets function below.
+	static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
+		List<Integer> result = new ArrayList<>(2);
+		int f = 0;
+		int l = 0;
+		for (int i = 0; i < a.size(); i++) {
+			if (a.get(i) > b.get(i)) {
+				f = result.get(0);
+				result.add(0, f + 1);
+			} else {
+				l = result.get(1);
+				result.add(1, l + 1);
+			}
+		}
+		result.add(0, f);
+		result.add(1, l);
+		return result;
+	}
 
 	// Complete the isValid function below.
 	static String isValid(String s) {
@@ -21,19 +64,19 @@ public class Solution {
 			}
 		}
 		System.out.println(deck.values());
-        Integer[] values = new Integer[deck.values().size()];
-        values = deck.values().toArray(values);
-        int first = Collections.min(Arrays.asList(values));
-        System.out.println(first);
-        int exception = 0;
-        for (int j = 0; j < values.length; j++) {
-            if (exception > 1) {
-                return "NO";
-            } else if (exception == 0) {
-                exception++;
-            }
-        }
-        return "YES";
+		Integer[] values = new Integer[deck.values().size()];
+		values = deck.values().toArray(values);
+		int first = Collections.min(Arrays.asList(values));
+		System.out.println(first);
+		int exception = 0;
+		for (int j = 0; j < values.length; j++) {
+			if (exception > 1) {
+				return "NO";
+			} else if (exception == 0) {
+				exception++;
+			}
+		}
+		return "YES";
 	}
 
 	// Complete the makeAnagram function below.
