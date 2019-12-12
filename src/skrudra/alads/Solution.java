@@ -10,8 +10,40 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the substrCount function below.
+	static long substrCount(int n, String str) {
+		long r = 0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 1; j <= n; j++) {
+				if (i < j) {
+					String t = str.substring(i, j);
+					System.out.println(t);
+					StringBuilder sb = new StringBuilder(t).reverse();
+					System.out.println(sb);
+//					if(t.substring(0, t.length()/2).equals(t.length() - t.length()/2))
+					if (t.equals(sb.toString())) {
+						// check for same beginning and ending
+						int p = 0;
+						for (int k = 0; t.length() > 1 && k < t.length(); k++) {
+							if (t.charAt(k) != t.charAt(k + 1)) {
+								p = k;
+								break;
+							}
+						}
+						if (p == 0) {
+							r++;
+						} else if (p <= t.length() && t.startsWith(t.substring(p))) {
+							r++;
+						}
+					}
+				}
+			}
+		}
+		return r;
+	}
+
 	static int maxSequenceOf1sInBinary(int n) {
-//		int n = 439;
+		// int n = 439;
 		String binary = "";
 		while (n > 0) {
 			binary = n % 2 + binary;
@@ -248,8 +280,11 @@ public class Solution {
 
 	public static void main(String[] args) throws IOException {
 		int[] socks = { 10, 20, 20, 10, 10, 30, 50, 10, 20 };
-		System.out.println(sockMerchant(9, socks));
+		// System.out.println(sockMerchant(9, socks));
 
-		System.out.println(makeAnagram("fcrxzwscanmligyxyvym`", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+		// System.out.println(makeAnagram("fcrxzwscanmligyxyvym`",
+		// "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+
+		System.out.println(substrCount(7, "abcbaba"));
 	}
 }
