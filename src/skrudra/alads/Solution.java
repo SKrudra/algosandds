@@ -7,8 +7,20 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalInt;
 
 public class Solution {
+	
+	// Complete the birthdayCakeCandles function below.
+    static int birthdayCakeCandles(int[] ar) {
+    	int max = 0;
+    	OptionalInt i = Arrays.stream(ar).max();
+        if(i.isPresent()) {
+        	max = i.getAsInt();
+        }
+        final int temp = max;
+        return (int) Arrays.stream(ar).filter(a -> a == temp).count();
+    }
 
 	// Complete the miniMaxSum function below.
 	static void miniMaxSum(int[] arr) {
