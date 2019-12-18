@@ -10,6 +10,32 @@ import java.util.Map;
 
 public class Solution {
 
+	// Complete the miniMaxSum function below.
+	static void miniMaxSum(int[] arr) {
+		long min = 0;
+		long max = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			long temp = 0;
+			for (int j = 0; j < 5; j++) {
+				if (i != j) {
+					temp += arr[j];
+				}
+			}
+			if (i == 0) {
+				min = temp;
+				max = temp;
+			} else {
+				if (temp < min) {
+					min = temp;
+				} else if (temp > max) {
+					max = temp;
+				}
+			}
+		}
+		System.out.println(min + " " + max);
+	}
+
 	// Complete the substrCount function below.
 	static long substrCount(int n, String str) {
 		long r = 0;
@@ -285,6 +311,8 @@ public class Solution {
 		// System.out.println(makeAnagram("fcrxzwscanmligyxyvym`",
 		// "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
 
-		System.out.println(substrCount(7, "abcbaba"));
+//		System.out.println(substrCount(7, "abcbaba"));
+
+		miniMaxSum(new int[]{793810624, 895642170, 685903712, 623789054, 468592370});
 	}
 }
