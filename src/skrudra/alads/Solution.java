@@ -10,17 +10,31 @@ import java.util.Map;
 import java.util.OptionalInt;
 
 public class Solution {
-	
+
+	// Complete the circularArrayRotation(right shift) function below.
+	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
+		int n = a.length;
+		int arr[] = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[(i + k) % n] = a[i];
+		}
+		int[] output = new int[queries.length];
+		for (int i = 0; i < queries.length; i++) {
+			output[i] = arr[queries[i]];
+		}
+		return output;
+	}
+
 	// Complete the birthdayCakeCandles function below.
-    static int birthdayCakeCandles(int[] ar) {
-    	int max = 0;
-    	OptionalInt i = Arrays.stream(ar).max();
-        if(i.isPresent()) {
-        	max = i.getAsInt();
-        }
-        final int temp = max;
-        return (int) Arrays.stream(ar).filter(a -> a == temp).count();
-    }
+	static int birthdayCakeCandles(int[] ar) {
+		int max = 0;
+		OptionalInt i = Arrays.stream(ar).max();
+		if (i.isPresent()) {
+			max = i.getAsInt();
+		}
+		final int temp = max;
+		return (int) Arrays.stream(ar).filter(a -> a == temp).count();
+	}
 
 	// Complete the miniMaxSum function below.
 	static void miniMaxSum(int[] arr) {
@@ -325,6 +339,8 @@ public class Solution {
 
 //		System.out.println(substrCount(7, "abcbaba"));
 
-		miniMaxSum(new int[]{793810624, 895642170, 685903712, 623789054, 468592370});
+//		miniMaxSum(new int[]{793810624, 895642170, 685903712, 623789054, 468592370});
+		
+		circularArrayRotation()
 	}
 }
