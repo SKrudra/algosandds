@@ -10,6 +10,23 @@ import java.util.Map;
 import java.util.OptionalInt;
 
 public class Solution {
+	
+	
+	// Complete the maximumToys function below.
+	static int maximumToys(int[] prices, int k) {
+		Arrays.sort(prices);
+		int sum = 0;
+		int index = 0;
+		for(int i = 0; i < prices.length; i++) {
+			sum+=prices[i];
+			index = i;
+			if(sum > k) {
+				break;
+			}
+		}
+			
+		return index;
+    }
 
 	// Complete the circularArrayRotation(right shift) function below.
 	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
@@ -341,6 +358,5 @@ public class Solution {
 
 //		miniMaxSum(new int[]{793810624, 895642170, 685903712, 623789054, 468592370});
 		
-		circularArrayRotation()
 	}
 }
