@@ -10,23 +10,48 @@ import java.util.Map;
 import java.util.OptionalInt;
 
 public class Solution {
-	
-	
+
+	// Complete the activityNotifications function below.
+	static int activityNotifications(int[] expenditure, int d) {
+		int ex = 0;
+		for (int i = d - 1; i < expenditure.length-1; i++) {
+			
+			int arr[] = new int[d];
+			for(int j = 0; j < d; j++) {
+				arr[j] = expenditure[i-j];
+			}
+			
+			Arrays.sort(arr);
+			
+			float median = 0;
+			if(d%2==0) {
+				median = (arr[d/2] + arr[(d/2)+1])/2;
+			}else {
+				median = arr[d/2];
+			}
+			
+			if (expenditure[i + 1] >= (median * 2)) {
+				ex++;
+			}
+		}
+		return ex;
+	}
+
 	// Complete the maximumToys function below.
 	static int maximumToys(int[] prices, int k) {
 		Arrays.sort(prices);
 		int sum = 0;
 		int index = 0;
-		for(int i = 0; i < prices.length; i++) {
-			sum+=prices[i];
+		for (int i = 0; i < prices.length; i++) {
+			sum += prices[i];
 			index = i;
-			if(sum > k) {
+			if (sum > k) {
 				break;
 			}
 		}
-			
+
 		return index;
-    }
+	}
 
 	// Complete the circularArrayRotation(right shift) function below.
 	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
@@ -357,6 +382,6 @@ public class Solution {
 //		System.out.println(substrCount(7, "abcbaba"));
 
 //		miniMaxSum(new int[]{793810624, 895642170, 685903712, 623789054, 468592370});
-		
+
 	}
 }
