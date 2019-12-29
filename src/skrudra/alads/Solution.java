@@ -11,25 +11,41 @@ import java.util.OptionalInt;
 
 public class Solution {
 
+	// Complete the whatFlavors function below.
+	static void whatFlavors(int[] cost, int money) {
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < cost.length; i++) {
+			int sunny = money - cost[i];
+			if (map.containsKey(sunny)) {
+				int a = i + 1;
+				int b = map.get(sunny);
+				System.out.println((a > b ? b : a) + " " + (a > b ? a : b));
+				return;
+			} else {
+				map.put(cost[i], i + 1);
+			}
+		}
+	}
+
 	// Complete the activityNotifications function below.
 	static int activityNotifications(int[] expenditure, int d) {
 		int ex = 0;
-		for (int i = d - 1; i < expenditure.length-1; i++) {
-			
+		for (int i = d - 1; i < expenditure.length - 1; i++) {
+
 			int arr[] = new int[d];
-			for(int j = 0; j < d; j++) {
-				arr[j] = expenditure[i-j];
+			for (int j = 0; j < d; j++) {
+				arr[j] = expenditure[i - j];
 			}
-			
+
 			Arrays.sort(arr);
-			
+
 			float median = 0;
-			if(d%2==0) {
-				median = (arr[d/2] + arr[(d/2)+1])/2;
-			}else {
-				median = arr[d/2];
+			if (d % 2 == 0) {
+				median = (arr[d / 2] + arr[(d / 2) + 1]) / 2;
+			} else {
+				median = arr[d / 2];
 			}
-			
+
 			if (expenditure[i + 1] >= (median * 2)) {
 				ex++;
 			}
