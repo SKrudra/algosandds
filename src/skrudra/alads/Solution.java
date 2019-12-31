@@ -10,6 +10,16 @@ import java.util.Map;
 import java.util.OptionalInt;
 
 public class Solution {
+	
+	// sum of digits using recursion
+	public static int sumOfDigitsWithRecursion(int n) {
+		int sum = 0;
+		if (n == 0) {
+			return sum;
+		}
+		sum = n % 10 + sumOfDigitsWithRecursion(n / 10);
+		return sum;
+	}
 
 	// Complete the whatFlavors function below.
 	static void whatFlavors(int[] cost, int money) {
