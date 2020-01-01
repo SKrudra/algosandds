@@ -7,10 +7,26 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.OptionalInt;
 
 public class Solution {
-	
+
+	// Complete the migratoryBirds function below.
+	static int migratoryBirds(List<Integer> arr) {
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < arr.size(); i++) {
+
+			if (map.containsKey(arr.get(i))) {
+				map.put(arr.get(i), map.get(arr.get(i)) + 1);
+			} else {
+				map.put(arr.get(i), 1);
+			}
+		}
+		return map.entrySet().stream().filter(entry -> Objects.equals(entry.getValue(), Collections.max(map.values())))
+				.map(Map.Entry::getKey).findFirst().get();
+	}
+
 	// sum of digits using recursion
 	public static int sumOfDigitsWithRecursion(int n) {
 		int sum = 0;
@@ -411,3 +427,5 @@ public class Solution {
 
 	}
 }
+
+
